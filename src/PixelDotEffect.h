@@ -7,7 +7,7 @@
 class PixelDotEffect {
 	public:
 	
-    
+    void setup();
     
     virtual void applyEffectToDot(PixelDot (&dots)[DOTS_W][DOTS_H], ofVec2f scrollPos, float deltaTime){}
     
@@ -15,7 +15,9 @@ class PixelDotEffect {
     PixelDot * getPixelDotFromGamePos(PixelDot (&dots)[DOTS_W][DOTS_H], ofVec2f gamePos, ofVec2f scrollPos);
     
     
+    bool isActive;
     ofVec2f myGamePos;
+    
     
     
 };

@@ -1,6 +1,8 @@
 #include "PixelDotEffect.h"
 
-
+void PixelDotEffect::setup(){
+    isActive = true;
+}
 
 
 GridPos PixelDotEffect::getDotPosFromGamePos(ofVec2f gamePos, ofVec2f scrollPos){

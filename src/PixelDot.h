@@ -6,14 +6,15 @@
 class PixelDot {
 	public:
     
-    void setup(int col, int row, float spacing, int gameX, int gameY);
+    void setup(int col, int row, float _spacing, int gameX, int gameY);
     void clearEffects();
     void update(unsigned char * bwPix);
     void draw();
     
     int getPixelArrayPos(int x, int y);
     
-    ofVec2f screenPos;
+    float spacing;
+    ofVec2f screenPos, startScreenPos;
     float maxSize;
     
     vector<int> pixelsIDsToAverage;
@@ -27,7 +28,10 @@ class PixelDot {
     //things for effects
     ofColor col;
     float effectScale;
-               
+    
+    //moving around
+    float moveXeno;
+    ofVec2f targetScreenPos;
             
             
     

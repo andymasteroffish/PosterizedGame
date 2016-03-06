@@ -4,6 +4,8 @@
 #include "GameObject.h"
 #include "BasicInfo.h"
 #include "HeartbeatEffect.h"
+#include "LaserChargeEffect.h"
+#include "LaserBlast.h"
 
 class Player : public GameObject {
 	public:
@@ -16,14 +18,18 @@ class Player : public GameObject {
     void keyReleased(int key);
     
     float walkSpeed;
+    int dir;
     
     bool holdingLeft, holdingRight;
-    
-    ofVec2f pos;
     
     
     //heart effect
     HeartbeatEffect * heartbeatEffect;
+    LaserChargeEffect * laserChargeEffect;
+    
+    //shooting
+    bool isChargingShot;
+    float shotChargeTimer;
     
     
     

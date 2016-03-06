@@ -5,6 +5,10 @@ bool dotSort(  PixelDot * a, PixelDot * b ) {
     return a->curSize < b->curSize;
 }
 
+bool sortGameObjectsOnZIndex(  GameObject * a, GameObject * b ) {
+    return a->zIndex > b->zIndex;
+}
+
 //--------------------------------------------------------------
 void ofApp::setup(){
     
@@ -61,6 +65,17 @@ void ofApp::update(){
     //update the game objects
     for (int i=0; i<gameObjects.size(); i++){
         gameObjects[i]->update(deltaTime);
+        
+        //did this thing create a new game object?
+        if (gameObjects[i]->gameObjectToAdd != NULL){
+            setupNewGameObject(gameObjects[i]->gameObjectToAdd);
+            gameObjects[i]->gameObjectToAdd = NULL; //turn off the flag onc eit has been added to the vector
+        }
+        
+        //is it time for this thing to die?
+        if (gameObjects[i]->killMe){
+            killGameObject(i);
+        }
     }
     
     //check if we need to scroll
@@ -71,8 +86,6 @@ void ofApp::update(){
         scrollTarget.x -= (player.pos.x+scrollTarget.x) - (distFromEdgeToScroll);
     }
     scrollPos = (1-scrollXeno)*scrollPos + scrollXeno * scrollTarget;
-    
-    
     
     
     
@@ -156,6 +169,7 @@ void ofApp::drawGameFBO(){
     }
     
     //draw the gameobjects
+    sort(gameObjects.begin(), gameObjects.end(), sortGameObjectsOnZIndex);
     for (int i=0; i<gameObjects.size(); i++){
         gameObjects[i]->draw();
     }
@@ -177,11 +191,6 @@ void ofApp::draw(){
     for (int i=0; i<sortedDots.size(); i++){
         sortedDots[i]->draw();
     }
-//    for (int x=0; x<DOTS_W; x++){
-//        for (int y=0; y<DOTS_H; y++){
-//            dots[x][y].draw();
-//        }
-//    }
     
     //draw debug info
     if (debugShowFBO){
@@ -190,8 +199,21 @@ void ofApp::draw(){
         
         ofSetColor(255,0,0);
         ofDrawBitmapString("FPS: "+ofToString(ofGetFrameRate()), ofGetWidth()-100, 40);
+        ofDrawBitmapString("objects: "+ofToString(gameObjects.size()), ofGetWidth()-100, 55);
     }
     
+}
+
+//--------------------------------------------------------------
+//initiating and killing game objects
+void ofApp::setupNewGameObject(GameObject *newObject){
+    newObject->setup();
+    gameObjects.push_back(newObject);
+}
+
+void ofApp::killGameObject(int index){
+    gameObjects[index]->destroy();
+    gameObjects.erase(gameObjects.begin()+index);
 }
 
 //--------------------------------------------------------------

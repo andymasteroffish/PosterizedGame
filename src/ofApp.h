@@ -18,6 +18,9 @@ public:
     void drawGameFBO();
     void draw();
     
+    void setupNewGameObject(GameObject * newObject);
+    void killGameObject(int index);
+    
     void keyPressed(int key);
     void keyReleased(int key);
     void mouseMoved(int x, int y);

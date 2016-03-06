@@ -2,6 +2,9 @@
 
 
 void GameObject::setup(){
+    zIndex = 0;
+    killMe = false;
+    gameObjectToAdd = NULL;
     setupCustom();
 }
 
@@ -18,7 +21,9 @@ void GameObject::draw(){
 
 void GameObject::addMyPixelEffectsToVector(vector<PixelDotEffect *> * targetVector){
     for (int i=0; i<pixelEffects.size(); i++){
-        targetVector->push_back( pixelEffects[i]);
+        if (pixelEffects[i]->isActive){
+            targetVector->push_back( pixelEffects[i]);
+        }
     }
 }
 

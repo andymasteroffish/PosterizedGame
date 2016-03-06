@@ -1,13 +1,17 @@
 #include "PixelDot.h"
 
 
-void PixelDot::setup(int col, int row, float spacing, int gameX, int gameY){
+void PixelDot::setup(int col, int row, float _spacing, int gameX, int gameY){
+    spacing = _spacing;
     screenPos.x = col * spacing;
     screenPos.y = row * spacing;
+    startScreenPos = screenPos;
+    
+    cout<<col<<" "<<row<<": "<<startScreenPos<<endl;
     
     maxSize = spacing * 0.6;
     
-    xeno = 0.15;
+    xeno = 0.3;
     
     //go in a box around the center pixel
     int range = 2;
@@ -21,14 +25,15 @@ void PixelDot::setup(int col, int row, float spacing, int gameX, int gameY){
         }
     }
     
-    
-    
 }
 
 void PixelDot::clearEffects(){
     //remove any effects that might be caused by pixel effects on game objects
     col = ofColor::black;
     effectScale = 1;
+    
+    targetScreenPos = startScreenPos;
+    moveXeno = 1;
 }
 
 void PixelDot::update(unsigned char * bwPix){
@@ -44,6 +49,9 @@ void PixelDot::update(unsigned char * bwPix){
     
     float prc = 1-(curValue/255.0);
     curSize = prc * maxSize * effectScale;
+    
+    //adjust position if anything it affecting it
+    screenPos = (1-moveXeno)*screenPos + moveXeno*targetScreenPos;
     
 }
 

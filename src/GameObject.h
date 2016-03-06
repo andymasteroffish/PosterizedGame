@@ -23,7 +23,15 @@ class GameObject {
     
     float deltaTime;
     
+    ofVec2f pos;
+    
     vector<PixelDotEffect *> pixelEffects;
+    
+    float zIndex;
+    
+    bool killMe;
+    
+    GameObject * gameObjectToAdd;   //enabling game objects to spawn new game objects
     
     
 };

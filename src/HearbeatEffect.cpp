@@ -1,6 +1,7 @@
 #include "HeartbeatEffect.h"
 
 HeartbeatEffect::HeartbeatEffect(){
+    setup();
     offsetFormPlayer.x = 17;
     offsetFormPlayer.y = 30;
     timer = 99999;

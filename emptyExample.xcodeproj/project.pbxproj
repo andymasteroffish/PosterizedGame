@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		574B05011C8902E20055213F /* LaserBlast.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 574B04FF1C8902E20055213F /* LaserBlast.cpp */; };
+		574B05041C890B740055213F /* LaserChargeEffect.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 574B05021C890B740055213F /* LaserChargeEffect.cpp */; };
 		575F3A741C8660B100975E8F /* HearbeatEffect.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 575F3A721C8660B100975E8F /* HearbeatEffect.cpp */; };
 		578568451C7FD89D003210C3 /* PixeDot.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 578568431C7FD89D003210C3 /* PixeDot.cpp */; };
 		57915C7A1C85DCFB0022CD99 /* PixelDotEffect.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 57915C781C85DCFB0022CD99 /* PixelDotEffect.cpp */; };
@@ -65,6 +67,10 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		574B04FF1C8902E20055213F /* LaserBlast.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = LaserBlast.cpp; sourceTree = "<group>"; };
+		574B05001C8902E20055213F /* LaserBlast.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LaserBlast.h; sourceTree = "<group>"; };
+		574B05021C890B740055213F /* LaserChargeEffect.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = LaserChargeEffect.cpp; sourceTree = "<group>"; };
+		574B05031C890B740055213F /* LaserChargeEffect.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LaserChargeEffect.h; sourceTree = "<group>"; };
 		575F3A721C8660B100975E8F /* HearbeatEffect.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = HearbeatEffect.cpp; sourceTree = "<group>"; };
 		575F3A731C8660B100975E8F /* HeartbeatEffect.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HeartbeatEffect.h; sourceTree = "<group>"; };
 		578568431C7FD89D003210C3 /* PixeDot.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PixeDot.cpp; sourceTree = "<group>"; };
@@ -135,6 +141,8 @@
 			children = (
 				57DD07C41C7FCC8A00F3A60B /* GameObject.h */,
 				57DD07C31C7FCC8A00F3A60B /* GameObject.cpp */,
+				574B05001C8902E20055213F /* LaserBlast.h */,
+				574B04FF1C8902E20055213F /* LaserBlast.cpp */,
 				57FCFB4D1C7FCD0E00A75C9B /* Player.h */,
 				57FCFB4C1C7FCD0E00A75C9B /* Player.cpp */,
 				5793465A1C849A0C00BAEDD4 /* BackgroundObject.h */,
@@ -150,6 +158,8 @@
 				57915C781C85DCFB0022CD99 /* PixelDotEffect.cpp */,
 				575F3A731C8660B100975E8F /* HeartbeatEffect.h */,
 				575F3A721C8660B100975E8F /* HearbeatEffect.cpp */,
+				574B05031C890B740055213F /* LaserChargeEffect.h */,
+				574B05021C890B740055213F /* LaserChargeEffect.cpp */,
 			);
 			name = PixelDotEffects;
 			sourceTree = "<group>";
@@ -337,7 +347,9 @@
 				57915C7A1C85DCFB0022CD99 /* PixelDotEffect.cpp in Sources */,
 				575F3A741C8660B100975E8F /* HearbeatEffect.cpp in Sources */,
 				E4B69E210A3A1BDC003C02F2 /* ofApp.cpp in Sources */,
+				574B05011C8902E20055213F /* LaserBlast.cpp in Sources */,
 				5793465B1C849A0C00BAEDD4 /* BackgroundObject.cpp in Sources */,
+				574B05041C890B740055213F /* LaserChargeEffect.cpp in Sources */,
 				57DD07C51C7FCC8A00F3A60B /* GameObject.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

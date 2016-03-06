@@ -10,6 +10,4 @@ class BackgroundObject : public GameObject {
     void setupCustom();
     void drawCustom();
     
-    ofVec2f pos;
-    
 };
