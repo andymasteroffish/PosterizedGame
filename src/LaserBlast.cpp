@@ -14,8 +14,9 @@ void LaserBlast::setupCustom(){
 void LaserBlast::setFromShooter(ofVec2f _pos, int _dir, float chargeTime){
     dir = _dir;
     pos = _pos;
-    pos.y += 17;    //move it down a bit
+    
     pos.x += 20;
+    pos.y -= 10;
     
     startPos = pos;
     

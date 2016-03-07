@@ -3,12 +3,8 @@
 LaserChargeEffect::LaserChargeEffect(){
     setup();
     rangeOfEffect = 5;
-}
-
-void LaserChargeEffect::setPosFromPlayer(ofVec2f playerPos){
-    myGamePos = playerPos;
-    myGamePos.y += 17;    //move it down a bit
-    myGamePos.x += 20;
+    offsetFromParentObject.x = 20;
+    offsetFromParentObject.y = -10;
 }
 
 void LaserChargeEffect::applyEffectToDot(PixelDot (&dots)[DOTS_W][DOTS_H], ofVec2f scrollPos, float deltaTime){

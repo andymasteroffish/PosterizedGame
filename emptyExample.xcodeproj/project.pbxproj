@@ -81,6 +81,7 @@
 		5793465A1C849A0C00BAEDD4 /* BackgroundObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BackgroundObject.h; sourceTree = "<group>"; };
 		57DD07C31C7FCC8A00F3A60B /* GameObject.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GameObject.cpp; sourceTree = "<group>"; };
 		57DD07C41C7FCC8A00F3A60B /* GameObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameObject.h; sourceTree = "<group>"; };
+		57EA06A01C8D2B330025E719 /* RaycastInfo.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RaycastInfo.h; sourceTree = "<group>"; };
 		57FCFB4C1C7FCD0E00A75C9B /* Player.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Player.cpp; sourceTree = "<group>"; };
 		57FCFB4D1C7FCD0E00A75C9B /* Player.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Player.h; sourceTree = "<group>"; };
 		57FCFB4F1C7FCDCA00A75C9B /* BasicInfo.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BasicInfo.h; sourceTree = "<group>"; };
@@ -239,6 +240,7 @@
 				E4B69E1E0A3A1BDC003C02F2 /* ofApp.cpp */,
 				578568441C7FD89D003210C3 /* PixelDot.h */,
 				578568431C7FD89D003210C3 /* PixeDot.cpp */,
+				57EA06A01C8D2B330025E719 /* RaycastInfo.h */,
 				575F3A771C8675A200975E8F /* GameObjects */,
 				575F3A781C8675AF00975E8F /* PixelDotEffects */,
 			);

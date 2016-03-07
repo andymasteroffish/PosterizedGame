@@ -2,15 +2,13 @@
 
 HeartbeatEffect::HeartbeatEffect(){
     setup();
-    offsetFormPlayer.x = 17;
-    offsetFormPlayer.y = 30;
+    offsetFromParentObject.x = -10;
+    offsetFromParentObject.y = 0;
     timer = 99999;
     curScale = 1;
 }
 
-void HeartbeatEffect::setPosFromPlayer(ofVec2f playerPos){
-    myGamePos = playerPos + offsetFormPlayer;
-}
+
 
 void HeartbeatEffect::applyEffectToDot(PixelDot (&dots)[DOTS_W][DOTS_H], ofVec2f scrollPos, float deltaTime){
     //get the dot

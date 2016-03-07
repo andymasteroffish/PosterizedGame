@@ -4,12 +4,14 @@
 void Player::setupCustom(){
     walkSpeed = 0.34;
     
+    setHitBox(40, 80);
+    
     holdingLeft = false;
     holdingRight = false;
     dir = 1;
     
-    pos.x = GAME_W / 2;
-    pos.y = GAME_H / 2;
+    pos.x = GAME_W * 0.5;
+    pos.y = GAME_H * 0.75;
     
     heartbeatEffect = new HeartbeatEffect();
     pixelEffects.push_back(heartbeatEffect);
@@ -39,9 +41,6 @@ void Player::updateCustom(){
         shotChargeTimer += deltaTime;
     }
     
-    heartbeatEffect->setPosFromPlayer(pos);
-    laserChargeEffect->setPosFromPlayer(pos);
-    
     
 }
 
@@ -49,7 +48,7 @@ void Player::drawCustom(){
     
     ofSetColor(0, 0, 0);
     
-    ofRect(pos.x, pos.y, 40, 80);
+    ofRect(pos.x+hitBox.x, pos.y+hitBox.y, hitBox.width, hitBox.height);
     
     //tetsing
     //ofSetColor(255,0,0);

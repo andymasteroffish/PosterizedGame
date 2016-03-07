@@ -5,6 +5,10 @@ void PixelDotEffect::setup(){
 }
 
 
+void PixelDotEffect::setPosFromParentObject(ofVec2f objectPos){
+    myGamePos = objectPos + offsetFromParentObject;
+}
+
 GridPos PixelDotEffect::getDotPosFromGamePos(ofVec2f gamePos, ofVec2f scrollPos){
     GridPos dotPos;
     
@@ -17,6 +21,7 @@ GridPos PixelDotEffect::getDotPosFromGamePos(ofVec2f gamePos, ofVec2f scrollPos)
     
     return dotPos;
 }
+
 
 PixelDot * PixelDotEffect::getPixelDotFromGamePos(PixelDot (&dots)[DOTS_W][DOTS_H], ofVec2f gamePos, ofVec2f scrollPos){
     GridPos dotPos = getDotPosFromGamePos(gamePos, scrollPos);

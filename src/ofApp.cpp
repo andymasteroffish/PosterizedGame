@@ -31,6 +31,7 @@ void ofApp::setup(){
     
     
     debugShowFBO = true;
+    showDebugInfo = true;
     
     distFromEdgeToScroll = GAME_W * 0.4;
     scrollXeno = 0.5;
@@ -45,14 +46,15 @@ void ofApp::reset(){
     scrollPos.set(0,0);
     scrollTarget = scrollPos;
     
-    player.setup();
-    gameObjects.push_back(&player);
+    //player.setup();
+    setupNewGameObject(&player);
     
     //some bg objects to test scrolling
     for (int i=0; i<5; i++){
         BackgroundObject * bgObject = new BackgroundObject();
-        bgObject->setup();
-        gameObjects.push_back(bgObject);
+        setupNewGameObject(bgObject);
+//        bgObject->setup();
+//        gameObjects.push_back(bgObject);
     }
 }
 
@@ -174,6 +176,13 @@ void ofApp::drawGameFBO(){
         gameObjects[i]->draw();
     }
     
+    //show the debug mode
+    if (showDebugInfo) {
+        for (int i=0; i<gameObjects.size(); i++){
+            gameObjects[i]->drawDebug();
+        }
+    }
+    
     ofPopMatrix();
     
     fbo.end();
@@ -208,6 +217,7 @@ void ofApp::draw(){
 //initiating and killing game objects
 void ofApp::setupNewGameObject(GameObject *newObject){
     newObject->setup();
+    newObject->allGameObjects = &gameObjects;
     gameObjects.push_back(newObject);
 }
 
@@ -221,6 +231,7 @@ void ofApp::keyPressed(int key){
 
     player.keyPressed(key);
     if (key == 'h')     debugShowFBO = !debugShowFBO;
+    if (key == 'd')     showDebugInfo = !showDebugInfo;
 }
 
 //--------------------------------------------------------------

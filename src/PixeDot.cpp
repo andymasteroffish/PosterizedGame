@@ -7,7 +7,6 @@ void PixelDot::setup(int col, int row, float _spacing, int gameX, int gameY){
     screenPos.y = row * spacing;
     startScreenPos = screenPos;
     
-    cout<<col<<" "<<row<<": "<<startScreenPos<<endl;
     
     maxSize = spacing * 0.6;
     
@@ -33,7 +32,7 @@ void PixelDot::clearEffects(){
     effectScale = 1;
     
     targetScreenPos = startScreenPos;
-    moveXeno = 1;
+    moveXeno = 0.5;
 }
 
 void PixelDot::update(unsigned char * bwPix){

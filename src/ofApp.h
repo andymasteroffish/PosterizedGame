@@ -45,6 +45,7 @@ public:
     //drawing the game into an FBO
     ofFbo fbo;
     bool debugShowFBO;
+    bool showDebugInfo;
     
     //scrolling
     ofVec2f scrollPos, scrollTarget;

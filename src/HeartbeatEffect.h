@@ -8,11 +8,7 @@ class HeartbeatEffect : public PixelDotEffect {
     
     HeartbeatEffect();
     
-    void setPosFromPlayer(ofVec2f playerPos);
-    
     void applyEffectToDot(PixelDot (&dots)[DOTS_W][DOTS_H], ofVec2f scrollPos, float deltaTime);
-    
-    ofVec2f offsetFormPlayer;
     
     
     //beating effect
