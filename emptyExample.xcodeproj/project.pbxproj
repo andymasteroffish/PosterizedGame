@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5746CF351C92F1B500A62B32 /* TerrainFloor.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5746CF331C92F1B500A62B32 /* TerrainFloor.cpp */; };
 		574B05011C8902E20055213F /* LaserBlast.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 574B04FF1C8902E20055213F /* LaserBlast.cpp */; };
 		574B05041C890B740055213F /* LaserChargeEffect.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 574B05021C890B740055213F /* LaserChargeEffect.cpp */; };
 		575F3A741C8660B100975E8F /* HearbeatEffect.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 575F3A721C8660B100975E8F /* HearbeatEffect.cpp */; };
@@ -67,6 +68,9 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		5746CF321C92EC5400A62B32 /* HitBox.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HitBox.h; sourceTree = "<group>"; };
+		5746CF331C92F1B500A62B32 /* TerrainFloor.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = TerrainFloor.cpp; sourceTree = "<group>"; };
+		5746CF341C92F1B500A62B32 /* TerrainFloor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TerrainFloor.h; sourceTree = "<group>"; };
 		574B04FF1C8902E20055213F /* LaserBlast.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = LaserBlast.cpp; sourceTree = "<group>"; };
 		574B05001C8902E20055213F /* LaserBlast.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LaserBlast.h; sourceTree = "<group>"; };
 		574B05021C890B740055213F /* LaserChargeEffect.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = LaserChargeEffect.cpp; sourceTree = "<group>"; };
@@ -142,6 +146,8 @@
 			children = (
 				57DD07C41C7FCC8A00F3A60B /* GameObject.h */,
 				57DD07C31C7FCC8A00F3A60B /* GameObject.cpp */,
+				5746CF341C92F1B500A62B32 /* TerrainFloor.h */,
+				5746CF331C92F1B500A62B32 /* TerrainFloor.cpp */,
 				574B05001C8902E20055213F /* LaserBlast.h */,
 				574B04FF1C8902E20055213F /* LaserBlast.cpp */,
 				57FCFB4D1C7FCD0E00A75C9B /* Player.h */,
@@ -241,6 +247,7 @@
 				578568441C7FD89D003210C3 /* PixelDot.h */,
 				578568431C7FD89D003210C3 /* PixeDot.cpp */,
 				57EA06A01C8D2B330025E719 /* RaycastInfo.h */,
+				5746CF321C92EC5400A62B32 /* HitBox.h */,
 				575F3A771C8675A200975E8F /* GameObjects */,
 				575F3A781C8675AF00975E8F /* PixelDotEffects */,
 			);
@@ -351,6 +358,7 @@
 				E4B69E210A3A1BDC003C02F2 /* ofApp.cpp in Sources */,
 				574B05011C8902E20055213F /* LaserBlast.cpp in Sources */,
 				5793465B1C849A0C00BAEDD4 /* BackgroundObject.cpp in Sources */,
+				5746CF351C92F1B500A62B32 /* TerrainFloor.cpp in Sources */,
 				574B05041C890B740055213F /* LaserChargeEffect.cpp in Sources */,
 				57DD07C51C7FCC8A00F3A60B /* GameObject.cpp in Sources */,
 			);

@@ -15,6 +15,8 @@
 #define DOTS_W 64
 #define DOTS_H 48
 
+enum GameObjectLayer { LAYER_DEFAULT, LAYER_TERRAIN };
+
 class GridPos{
 public:
     int x, y;

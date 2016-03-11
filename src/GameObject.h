@@ -3,6 +3,7 @@
 #include "ofMain.h"
 #include "PixelDotEffect.h"
 #include "RaycastInfo.h"
+#include "HitBox.h"
 
 
 
@@ -20,26 +21,30 @@ class GameObject {
     
     virtual void drawDebug();
     
+    void addMyPixelEffectsToVector(vector<PixelDotEffect*> * targetVector);
+    
+    HitBoxRect * addSquareHitBox(int width, int height);
+    HitBoxCircle * addCircleHitBox(float size);
+    
+    bool checkIfPointIsInHitBoxes(ofVec2f testPoint);
+    
+    RaycastInfo raycast(ofVec2f startPos, ofVec2f endPos);
+    
     void destroy();
     virtual void destroyCustom(){}
     
-    void addMyPixelEffectsToVector(vector<PixelDotEffect*> * targetVector);
-    
-    void setHitBox(int width, int height);
-    
-    bool checkIfPointIsInHitBox(ofVec2f testPoint);
-    
-    RaycastInfo raycast(ofVec2f startPos, ofVec2f endPos);
     
     
     //general info
     float deltaTime;
     bool killMe;
+    string objectName;
+    GameObjectLayer layer;
     
     vector<GameObject *> * allGameObjects;
     
-    //hitbox
-    ofRectangle hitBox;
+    //hitbox(s)
+    vector<HitBox *> hitBoxes;
     
     //where we are
     ofVec2f pos;

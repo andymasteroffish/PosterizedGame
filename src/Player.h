@@ -17,6 +17,8 @@ class Player : public GameObject {
     void keyPressed(int key);
     void keyReleased(int key);
     
+    void startJump();
+    
     float walkSpeed;
     int dir;
     
@@ -31,6 +33,18 @@ class Player : public GameObject {
     bool isChargingShot;
     float shotChargeTimer;
     
+    //drawing
+    float drawW, drawH;
+    
+    //falling
+    float grav;
+    float yVel;
+    bool isGrounded;
+    
+    float jumpPower;
+    
+    //figuring out when we are touching other objects
+    ofVec2f groundRayStartOffset, groundRayEndOffset;
     
     
 };

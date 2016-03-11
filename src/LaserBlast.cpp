@@ -9,6 +9,8 @@ void LaserBlast::setupCustom(){
     width = GAME_W*0.75;
     
     zIndex = -1;
+    
+    objectName = "laser blast";
 }
 
 void LaserBlast::setFromShooter(ofVec2f _pos, int _dir, float chargeTime){

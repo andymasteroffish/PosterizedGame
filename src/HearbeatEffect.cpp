@@ -14,6 +14,10 @@ void HeartbeatEffect::applyEffectToDot(PixelDot (&dots)[DOTS_W][DOTS_H], ofVec2f
     //get the dot
     PixelDot * thisDot = getPixelDotFromGamePos(dots, myGamePos, scrollPos);
     
+    if (thisDot == NULL){
+        return;
+    }
+    
     //set the color to red
     thisDot->col.set(255, 0, 0);
     

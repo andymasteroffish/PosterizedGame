@@ -14,6 +14,8 @@ void ofApp::setup(){
     
     ofBackground(255);
     
+    ofEnableAlphaBlending();
+    
     fbo.allocate(GAME_W, GAME_H, GL_RGB);
     
     rawPix  = new unsigned char [GAME_W * GAME_H * 3];
@@ -49,13 +51,23 @@ void ofApp::reset(){
     //player.setup();
     setupNewGameObject(&player);
     
+    setupLevel();
+
+}
+
+//--------------------------------------------------------------
+void ofApp::setupLevel(){
+    
+    //a floor
+    TerrainFloor * floor = new TerrainFloor(-300, 200, 600, 20);
+    setupNewGameObject(floor);
+    
     //some bg objects to test scrolling
-    for (int i=0; i<5; i++){
+    for (int i=0; i<10; i++){
         BackgroundObject * bgObject = new BackgroundObject();
         setupNewGameObject(bgObject);
-//        bgObject->setup();
-//        gameObjects.push_back(bgObject);
     }
+    
 }
 
 //--------------------------------------------------------------
@@ -152,7 +164,6 @@ void ofApp::update(){
 void ofApp::drawGameFBO(){
     //draw the game into the FBP
     ofEnableSmoothing();
-    ofEnableAlphaBlending();
     fbo.begin();
     ofClear(255);
     
@@ -171,15 +182,16 @@ void ofApp::drawGameFBO(){
     }
     
     //draw the gameobjects
-    sort(gameObjects.begin(), gameObjects.end(), sortGameObjectsOnZIndex);
-    for (int i=0; i<gameObjects.size(); i++){
-        gameObjects[i]->draw();
+    gameObjectsSorted = gameObjects;
+    sort(gameObjectsSorted.begin(), gameObjectsSorted.end(), sortGameObjectsOnZIndex);
+    for (int i=0; i<gameObjectsSorted.size(); i++){
+        gameObjectsSorted[i]->draw();
     }
     
     //show the debug mode
     if (showDebugInfo) {
-        for (int i=0; i<gameObjects.size(); i++){
-            gameObjects[i]->drawDebug();
+        for (int i=0; i<gameObjectsSorted.size(); i++){
+            gameObjectsSorted[i]->drawDebug();
         }
     }
     
@@ -207,8 +219,18 @@ void ofApp::draw(){
         fbo.draw(0,0, GAME_W, GAME_H);
         
         ofSetColor(255,0,0);
+        ofDrawBitmapString("mouse: "+ofToString(mouseX)+" "+ofToString(mouseY), ofGetWidth()-150, 25);
         ofDrawBitmapString("FPS: "+ofToString(ofGetFrameRate()), ofGetWidth()-100, 40);
         ofDrawBitmapString("objects: "+ofToString(gameObjects.size()), ofGetWidth()-100, 55);
+        
+        if (showDebugInfo){
+            string objectList = "";
+            for (int i=0; i<gameObjects.size(); i++){
+                objectList += ofToString(i)+": "+gameObjects[i]->objectName+"\n";
+            }
+            ofDrawBitmapString(objectList, ofGetWidth()-100, 70);
+            
+        }
     }
     
 }

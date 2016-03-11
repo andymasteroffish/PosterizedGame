@@ -2,16 +2,20 @@
 
 
 void Player::setupCustom(){
+    objectName = "player";
+    
     walkSpeed = 0.34;
     
-    setHitBox(40, 80);
+    drawW = 40;
+    drawH = 80;
+    addSquareHitBox(drawW, drawH);
     
     holdingLeft = false;
     holdingRight = false;
     dir = 1;
     
     pos.x = GAME_W * 0.5;
-    pos.y = GAME_H * 0.75;
+    pos.y = GAME_H * 0.5;
     
     heartbeatEffect = new HeartbeatEffect();
     pixelEffects.push_back(heartbeatEffect);
@@ -22,6 +26,15 @@ void Player::setupCustom(){
     
     isChargingShot = false;
     shotChargeTimer = 0;
+    
+    //figuring out when we are touching other objects
+    groundRayStartOffset.set(0, drawH/2);
+    groundRayEndOffset.set(0, drawH/2+5);
+    
+    //falling
+    yVel = 0;
+    grav = 0.03;
+    jumpPower = 2;
     
 }
 
@@ -41,6 +54,25 @@ void Player::updateCustom(){
         shotChargeTimer += deltaTime;
     }
     
+    //are we gorunded?
+    RaycastInfo thisRay = raycast(pos+groundRayStartOffset, pos+groundRayEndOffset);
+    //cout<<"I hit layer "<<thisRay.hitObjectLayerName<<" at "<<thisRay.hitPoint<<endl;
+    if (thisRay.hitObjectLayer == LAYER_TERRAIN && yVel >= 0){
+        isGrounded = true;
+        //put us on the ground if we're coming down
+        pos.y = thisRay.hitPoint.y - groundRayStartOffset.y;
+        
+    }else{
+        isGrounded = false;
+    }
+    
+    //if not, fall
+    if (!isGrounded){
+        yVel += grav;
+        pos.y += yVel;
+    }else{
+        yVel = 0;
+    }
     
 }
 
@@ -48,7 +80,10 @@ void Player::drawCustom(){
     
     ofSetColor(0, 0, 0);
     
-    ofRect(pos.x+hitBox.x, pos.y+hitBox.y, hitBox.width, hitBox.height);
+    ofRect(pos.x-drawW/2, pos.y-drawH/2, drawW, drawH);
+    
+    ofSetColor( ofColor::purple );
+    ofLine(pos+groundRayStartOffset, pos+groundRayEndOffset);
     
     //tetsing
     //ofSetColor(255,0,0);
@@ -60,11 +95,17 @@ void Player::keyPressed(int key){
     if (key == 356)  holdingLeft = true;
     if (key == 358) holdingRight = true;
     
+    if (key == 357 && isGrounded){    //up arrow
+        startJump();
+    }
+    
     if (key == ' ' && !isChargingShot){
         isChargingShot = true;
         laserChargeEffect->isActive = true;
         shotChargeTimer = 0;
     }
+    
+    //cout<<"key "<<key<<endl;
     
 }
 void Player::keyReleased(int key){
@@ -78,4 +119,8 @@ void Player::keyReleased(int key){
         newBlast->setFromShooter(pos, dir, shotChargeTimer);
         gameObjectToAdd = newBlast;
     }
+}
+
+void Player::startJump(){
+    yVel = -jumpPower;
 }

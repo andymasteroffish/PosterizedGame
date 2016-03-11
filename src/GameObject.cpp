@@ -5,7 +5,8 @@ void GameObject::setup(){
     zIndex = 0;
     killMe = false;
     gameObjectToAdd = NULL;
-    hitBox.set(-5, -5, 10, 10);
+    objectName = "none";
+    layer = LAYER_DEFAULT;
     setupCustom();
 }
 
@@ -28,10 +29,10 @@ void GameObject::draw(){
 
 void GameObject::drawDebug(){
     ofSetColor( ofColor::purple);
-    ofPushMatrix();
-    ofTranslate(pos.x, pos.y);
-    ofRect(hitBox);
-    ofPopMatrix();
+    
+    for (int i=0; i<hitBoxes.size(); i++){
+        hitBoxes[i]->drawDebug(pos);
+    }
 }
 
 
@@ -44,46 +45,56 @@ void GameObject::addMyPixelEffectsToVector(vector<PixelDotEffect *> * targetVect
     }
 }
 
-void GameObject::destroy(){
-    
-    //delete all pixel effects
-    for (int i=0; i<pixelEffects.size(); i++){
-        delete pixelEffects[i];
-    }
+
+HitBoxRect * GameObject::addSquareHitBox(int width, int height){
+    HitBoxRect * newHitbox = new HitBoxRect(0,0, width, height);
+    hitBoxes.push_back(newHitbox);
+    return newHitbox;
+}
+HitBoxCircle * GameObject::addCircleHitBox(float size){
+    HitBoxCircle * newHitBox = new HitBoxCircle(0,0,size);
+    hitBoxes.push_back(newHitBox);
+    return newHitBox;
 }
 
-void GameObject::setHitBox(int width, int height){
-    hitBox.width = width;
-    hitBox.height = height;
-    hitBox.x = -width/2;
-    hitBox.y = -height/2;
-}
-
-
-bool GameObject::checkIfPointIsInHitBox(ofVec2f testPoint){
-    if (hitBox.inside(testPoint.x, testPoint.y)){
-        return true;
+bool GameObject::checkIfPointIsInHitBoxes(ofVec2f testPoint){
+    //cout<<"checking point "<<testPoint<<" against "<<objectName<<". "<<hitBoxes.size()<<" points"<<endl;
+    for (int i=0; i<hitBoxes.size(); i++){
+        //cout<<"checking "<<objectName<<" box "<<i<<endl;
+        //bool checkVal = hitBoxes[i]->pointIsInside(testPoint, pos);
+        //cout<<"checkVal: "<<checkVal<<endl;
+        if (hitBoxes[i]->pointIsInside(testPoint, pos) == true){
+            //cout<<"inside this hitbox"<<endl;
+            return true;
+        }
     }
+    //cout<<"Not inside one of my hitboxes"<<endl;
     return false;
 }
 
 RaycastInfo GameObject::raycast(ofVec2f startPos, ofVec2f endPos){
+    //cout<<"---------------------"<<endl<<"NEW RAY"<<endl;
     ofVec2f totalLine = endPos - startPos;
     ofVec2f step = totalLine.normalized();
     
-    int numSteps = step.x / totalLine.x;
+    int numSteps = totalLine.length();
     
-    ofVec2f curPos;
+    ofVec2f curPos = startPos;
     for (int i=0; i<numSteps; i++){
         //test curPos against all other gameobjects
         for (int g=0; g<allGameObjects->size(); g++){
+            //cout<<"chekcing object "<<g<<" after "<<i<<" steps"<<endl;
             
-            //DOES allGameObjects->at(g) != this EVEN WORK?
-            if (allGameObjects->at(g) != this && allGameObjects->at(g)->checkIfPointIsInHitBox(curPos)){
-                RaycastInfo thisInfo;
-                thisInfo.hitObjectID = g;
-                thisInfo.hitPoint = curPos;
-                return thisInfo;
+            //Don't let it check against itself
+            if(allGameObjects->at(g) != this){
+                if (allGameObjects->at(g)->checkIfPointIsInHitBoxes(curPos) == true){
+                    RaycastInfo thisInfo;
+                    thisInfo.hitObjectID = g;
+                    thisInfo.hitPoint = curPos;
+                    thisInfo.hitObjectLayer = allGameObjects->at(g)->layer;
+                    //cout<<"connected with "<<g<<" after "<<i<<" steps"<<endl;
+                    return thisInfo;
+                }
             }
         }
         
@@ -92,12 +103,24 @@ RaycastInfo GameObject::raycast(ofVec2f startPos, ofVec2f endPos){
     }
     
     RaycastInfo empty;
-    empty.hitObjectID = -1;
+    empty.clear();
     return empty;
 }
 
 
 
 
+void GameObject::destroy(){
+    
+    //delete all pixel effects
+    for (int i=0; i<pixelEffects.size(); i++){
+        delete pixelEffects[i];
+    }
+    
+    //delete all hotboxes
+    for (int i=0; i<hitBoxes.size(); i++){
+        delete hitBoxes[i];
+    }
+}
 
 

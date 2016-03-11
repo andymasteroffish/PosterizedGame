@@ -9,11 +9,14 @@
 
 #include "Player.h"
 #include "BackgroundObject.h"
+#include "TerrainFloor.h"
 
 class ofApp : public ofBaseApp{
 public:
     void setup();
     void reset();
+    void setupLevel();
+    
     void update();
     void drawGameFBO();
     void draw();
@@ -53,7 +56,7 @@ public:
     float distFromEdgeToScroll;
     
     //game elements
-    vector<GameObject *> gameObjects;
+    vector<GameObject *> gameObjects, gameObjectsSorted;
     Player player;
     
 };
