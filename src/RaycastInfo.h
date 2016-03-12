@@ -1,24 +1,19 @@
 #pragma once
 
 #include "ofMain.h"
-#include "GameObject.h"
 
-
+class GameObject;   //this let's us reference a pointer to Gameobject, even though GameObject includes this file
 
 
 class RaycastInfo {
 public:
     
-    
-    int hitObjectID;    //CHANGE THIS TO A REFERENCE TO THE ACTUAL OBJECT
+    GameObject * hitObject;
     ofVec2f hitPoint;
     
-    GameObjectLayer hitObjectLayer;
-    
     void clear(){
-        hitObjectID = -1;
+        hitObject = NULL;
         hitPoint.set(0,0);
-        hitObjectLayer = LAYER_DEFAULT;
     }
     
     

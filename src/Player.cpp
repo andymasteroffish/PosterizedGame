@@ -57,13 +57,15 @@ void Player::updateCustom(){
     //are we gorunded?
     RaycastInfo thisRay = raycast(pos+groundRayStartOffset, pos+groundRayEndOffset);
     //cout<<"I hit layer "<<thisRay.hitObjectLayerName<<" at "<<thisRay.hitPoint<<endl;
-    if (thisRay.hitObjectLayer == LAYER_TERRAIN && yVel >= 0){
-        isGrounded = true;
-        //put us on the ground if we're coming down
-        pos.y = thisRay.hitPoint.y - groundRayStartOffset.y;
-        
-    }else{
-        isGrounded = false;
+    if (thisRay.hitObject != NULL){
+        if (thisRay.hitObject->layer == LAYER_TERRAIN && yVel >= 0){
+            isGrounded = true;
+            //put us on the ground if we're coming down
+            pos.y = thisRay.hitPoint.y - groundRayStartOffset.y;
+            
+        }else{
+            isGrounded = false;
+        }
     }
     
     //if not, fall

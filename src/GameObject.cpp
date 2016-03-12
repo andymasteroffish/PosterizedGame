@@ -89,9 +89,8 @@ RaycastInfo GameObject::raycast(ofVec2f startPos, ofVec2f endPos){
             if(allGameObjects->at(g) != this){
                 if (allGameObjects->at(g)->checkIfPointIsInHitBoxes(curPos) == true){
                     RaycastInfo thisInfo;
-                    thisInfo.hitObjectID = g;
+                    thisInfo.hitObject = allGameObjects->at(g);
                     thisInfo.hitPoint = curPos;
-                    thisInfo.hitObjectLayer = allGameObjects->at(g)->layer;
                     //cout<<"connected with "<<g<<" after "<<i<<" steps"<<endl;
                     return thisInfo;
                 }
