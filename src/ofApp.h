@@ -10,6 +10,7 @@
 #include "Player.h"
 #include "BackgroundObject.h"
 #include "TerrainFloor.h"
+#include "Turret.h"
 
 class ofApp : public ofBaseApp{
 public:

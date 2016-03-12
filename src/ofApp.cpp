@@ -33,7 +33,7 @@ void ofApp::setup(){
     
     
     debugShowFBO = true;
-    showDebugInfo = true;
+    showDebugInfo = false;
     
     distFromEdgeToScroll = GAME_W * 0.4;
     scrollXeno = 0.5;
@@ -59,8 +59,12 @@ void ofApp::reset(){
 void ofApp::setupLevel(){
     
     //a floor
-    TerrainFloor * floor = new TerrainFloor(-300, 200, 600, 20);
+    TerrainFloor * floor = new TerrainFloor(-100, 200, 600, 20);
     setupNewGameObject(floor);
+    
+    //a turret
+    Turret * turret = new Turret(GAME_W-30, 160);
+    setupNewGameObject(turret);
     
     //some bg objects to test scrolling
     for (int i=0; i<10; i++){
@@ -238,8 +242,8 @@ void ofApp::draw(){
 //--------------------------------------------------------------
 //initiating and killing game objects
 void ofApp::setupNewGameObject(GameObject *newObject){
-    newObject->setup();
-    newObject->allGameObjects = &gameObjects;
+    newObject->setup(&gameObjects);
+    //newObject->allGameObjects = &gameObjects;
     gameObjects.push_back(newObject);
 }
 

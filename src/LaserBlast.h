@@ -27,4 +27,6 @@ class LaserBlast : public GameObject {
     float timingCurve;
     
     ofVec2f startPos;
+    
+    bool hasDoneHitCheck;
 };

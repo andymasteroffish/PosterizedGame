@@ -3,12 +3,13 @@
 
 void Player::setupCustom(){
     objectName = "player";
+    layer = LAYER_PLAYER;
     
     walkSpeed = 0.34;
     
     drawW = 40;
     drawH = 80;
-    addSquareHitBox(drawW, drawH);
+    addRectangularHitBox(drawW, drawH);
     
     holdingLeft = false;
     holdingRight = false;

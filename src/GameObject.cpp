@@ -1,7 +1,8 @@
 #include "GameObject.h"
 
 
-void GameObject::setup(){
+void GameObject::setup(vector<GameObject *> * _allGameObjects){
+    allGameObjects = _allGameObjects;
     zIndex = 0;
     killMe = false;
     gameObjectToAdd = NULL;
@@ -46,7 +47,7 @@ void GameObject::addMyPixelEffectsToVector(vector<PixelDotEffect *> * targetVect
 }
 
 
-HitBoxRect * GameObject::addSquareHitBox(int width, int height){
+HitBoxRect * GameObject::addRectangularHitBox(int width, int height){
     HitBoxRect * newHitbox = new HitBoxRect(0,0, width, height);
     hitBoxes.push_back(newHitbox);
     return newHitbox;
@@ -72,7 +73,7 @@ bool GameObject::checkIfPointIsInHitBoxes(ofVec2f testPoint){
     return false;
 }
 
-RaycastInfo GameObject::raycast(ofVec2f startPos, ofVec2f endPos){
+RaycastInfo GameObject::raycast(ofVec2f startPos, ofVec2f endPos, GameObjectLayer layerToIgnore, GameObjectLayer layerToFocus){
     //cout<<"---------------------"<<endl<<"NEW RAY"<<endl;
     ofVec2f totalLine = endPos - startPos;
     ofVec2f step = totalLine.normalized();
@@ -86,7 +87,7 @@ RaycastInfo GameObject::raycast(ofVec2f startPos, ofVec2f endPos){
             //cout<<"chekcing object "<<g<<" after "<<i<<" steps"<<endl;
             
             //Don't let it check against itself
-            if(allGameObjects->at(g) != this){
+            if(allGameObjects->at(g) != this && allGameObjects->at(g)->layer != layerToIgnore && (layerToFocus == LAYER_NONE || allGameObjects->at(g)->layer == layerToFocus)){
                 if (allGameObjects->at(g)->checkIfPointIsInHitBoxes(curPos) == true){
                     RaycastInfo thisInfo;
                     thisInfo.hitObject = allGameObjects->at(g);
@@ -106,6 +107,19 @@ RaycastInfo GameObject::raycast(ofVec2f startPos, ofVec2f endPos){
     return empty;
 }
 
+void GameObject::markForDeath(){
+    killMe = true;
+    customDeathEffects();
+}
+
+GameObject * GameObject::findGameObjectWithLayer(GameObjectLayer layer){
+    for (int i=0; i<allGameObjects->size(); i++){
+        if (allGameObjects->at(i)->layer == layer){
+            return allGameObjects->at(i);
+        }
+    }
+    return NULL;
+}
 
 
 

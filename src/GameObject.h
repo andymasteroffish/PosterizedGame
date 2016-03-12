@@ -4,13 +4,14 @@
 #include "PixelDotEffect.h"
 #include "RaycastInfo.h"
 #include "HitBox.h"
+#include "BasicInfo.h"
 
 
 
 class GameObject {
 	public:
 	
-    void setup();
+    void setup(vector<GameObject *> * _allGameObjects);
     virtual void setupCustom() {}
     
     void update(float _deltaTime);
@@ -23,12 +24,17 @@ class GameObject {
     
     void addMyPixelEffectsToVector(vector<PixelDotEffect*> * targetVector);
     
-    HitBoxRect * addSquareHitBox(int width, int height);
+    HitBoxRect * addRectangularHitBox(int width, int height);
     HitBoxCircle * addCircleHitBox(float size);
     
     bool checkIfPointIsInHitBoxes(ofVec2f testPoint);
     
-    RaycastInfo raycast(ofVec2f startPos, ofVec2f endPos);
+    RaycastInfo raycast(ofVec2f startPos, ofVec2f endPos, GameObjectLayer layerToIgnore = LAYER_NONE, GameObjectLayer layerToFocus = LAYER_NONE);
+    
+    GameObject * findGameObjectWithLayer(GameObjectLayer layer);
+    
+    void markForDeath();
+    virtual void customDeathEffects(){}
     
     void destroy();
     virtual void destroyCustom(){}

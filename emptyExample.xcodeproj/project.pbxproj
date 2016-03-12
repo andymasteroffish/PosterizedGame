@@ -14,6 +14,8 @@
 		578568451C7FD89D003210C3 /* PixeDot.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 578568431C7FD89D003210C3 /* PixeDot.cpp */; };
 		57915C7A1C85DCFB0022CD99 /* PixelDotEffect.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 57915C781C85DCFB0022CD99 /* PixelDotEffect.cpp */; };
 		5793465B1C849A0C00BAEDD4 /* BackgroundObject.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 579346591C849A0C00BAEDD4 /* BackgroundObject.cpp */; };
+		57A944301C94C5C800187E3A /* Bullet.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 57A9442E1C94C5C800187E3A /* Bullet.cpp */; };
+		57A944331C94C5D100187E3A /* Turret.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 57A944311C94C5D100187E3A /* Turret.cpp */; };
 		57DD07C51C7FCC8A00F3A60B /* GameObject.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 57DD07C31C7FCC8A00F3A60B /* GameObject.cpp */; };
 		57FCFB4E1C7FCD0E00A75C9B /* Player.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 57FCFB4C1C7FCD0E00A75C9B /* Player.cpp */; };
 		BBAB23CB13894F3D00AA2426 /* GLUT.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = BBAB23BE13894E4700AA2426 /* GLUT.framework */; };
@@ -83,6 +85,10 @@
 		57915C791C85DCFB0022CD99 /* PixelDotEffect.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PixelDotEffect.h; sourceTree = "<group>"; };
 		579346591C849A0C00BAEDD4 /* BackgroundObject.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = BackgroundObject.cpp; sourceTree = "<group>"; };
 		5793465A1C849A0C00BAEDD4 /* BackgroundObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BackgroundObject.h; sourceTree = "<group>"; };
+		57A9442E1C94C5C800187E3A /* Bullet.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Bullet.cpp; sourceTree = "<group>"; };
+		57A9442F1C94C5C800187E3A /* Bullet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Bullet.h; sourceTree = "<group>"; };
+		57A944311C94C5D100187E3A /* Turret.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Turret.cpp; sourceTree = "<group>"; };
+		57A944321C94C5D100187E3A /* Turret.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Turret.h; sourceTree = "<group>"; };
 		57DD07C31C7FCC8A00F3A60B /* GameObject.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GameObject.cpp; sourceTree = "<group>"; };
 		57DD07C41C7FCC8A00F3A60B /* GameObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameObject.h; sourceTree = "<group>"; };
 		57EA06A01C8D2B330025E719 /* RaycastInfo.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RaycastInfo.h; sourceTree = "<group>"; };
@@ -154,6 +160,10 @@
 				57FCFB4C1C7FCD0E00A75C9B /* Player.cpp */,
 				5793465A1C849A0C00BAEDD4 /* BackgroundObject.h */,
 				579346591C849A0C00BAEDD4 /* BackgroundObject.cpp */,
+				57A944321C94C5D100187E3A /* Turret.h */,
+				57A944311C94C5D100187E3A /* Turret.cpp */,
+				57A9442F1C94C5C800187E3A /* Bullet.h */,
+				57A9442E1C94C5C800187E3A /* Bullet.cpp */,
 			);
 			name = GameObjects;
 			sourceTree = "<group>";
@@ -357,6 +367,8 @@
 				575F3A741C8660B100975E8F /* HearbeatEffect.cpp in Sources */,
 				E4B69E210A3A1BDC003C02F2 /* ofApp.cpp in Sources */,
 				574B05011C8902E20055213F /* LaserBlast.cpp in Sources */,
+				57A944301C94C5C800187E3A /* Bullet.cpp in Sources */,
+				57A944331C94C5D100187E3A /* Turret.cpp in Sources */,
 				5793465B1C849A0C00BAEDD4 /* BackgroundObject.cpp in Sources */,
 				5746CF351C92F1B500A62B32 /* TerrainFloor.cpp in Sources */,
 				574B05041C890B740055213F /* LaserChargeEffect.cpp in Sources */,

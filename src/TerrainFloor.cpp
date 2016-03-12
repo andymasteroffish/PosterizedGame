@@ -10,7 +10,7 @@ TerrainFloor::TerrainFloor(float x, float y, float _w, float _h){
 void TerrainFloor::setupCustom(){
     
     //creating a new hitbox
-    HitBoxRect * thisHitBox = addSquareHitBox(w, h);
+    HitBoxRect * thisHitBox = addRectangularHitBox(w, h);
     //hitboxes are centered by default, but I want this one to start right at the corner
     thisHitBox->x = 0;
     thisHitBox->y = 0;
