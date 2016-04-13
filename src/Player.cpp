@@ -37,6 +37,16 @@ void Player::setupCustom(){
     grav = 0.03;
     jumpPower = 2;
     
+    //temporary walking cycle
+    walkPics.assign(10, ofImage());
+    for (int i=0; i<10; i++){
+        walkPics[i].loadImage("walk/angry_walk"+ofToString(i)+".png");
+    }
+    walkFrameTime = 0.1;
+    curWalkFrame = 0;
+    walkFrameTimer = 0;
+    
+    
 }
 
 void Player::updateCustom(){
@@ -67,6 +77,8 @@ void Player::updateCustom(){
         }else{
             isGrounded = false;
         }
+    }else{
+        isGrounded = false;
     }
     
     //if not, fall
@@ -77,16 +89,31 @@ void Player::updateCustom(){
         yVel = 0;
     }
     
+    //walking animaiton
+    walkFrameTimer += deltaTime;
+    if (walkFrameTimer >= walkFrameTime){
+        walkFrameTimer = 0;
+        curWalkFrame++;
+        if (curWalkFrame >= walkPics.size()){
+            curWalkFrame = 0;
+        }
+    }
+    
 }
 
 void Player::drawCustom(){
     
     ofSetColor(0, 0, 0);
     
-    ofRect(pos.x-drawW/2, pos.y-drawH/2, drawW, drawH);
+    //ofRect(pos.x-drawW/2, pos.y-drawH/2, drawW, drawH);
     
-    ofSetColor( ofColor::purple );
-    ofLine(pos+groundRayStartOffset, pos+groundRayEndOffset);
+    //ofSetColor( ofColor::purple );
+    //ofLine(pos+groundRayStartOffset, pos+groundRayEndOffset);
+    
+    ofSetColor(255);
+    float walkPicScale = 0.15;//(float)drawH / (float)walkPics[0].height;
+    //cout<<walkPicScale<<endl;
+    walkPics[curWalkFrame].draw(pos.x-drawW/2, pos.y-drawH/2 - 18, walkPics[curWalkFrame].getWidth()*walkPicScale, walkPics[curWalkFrame].getHeight()*walkPicScale);
     
     //tetsing
     //ofSetColor(255,0,0);

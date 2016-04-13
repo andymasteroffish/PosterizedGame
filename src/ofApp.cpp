@@ -179,7 +179,7 @@ void ofApp::drawGameFBO(){
     for (int i=0; i<20; i++){
         ofSetColor( ofRandom(150,255) );
         ofPushMatrix();
-        ofTranslate(ofRandom(GAME_W), ofRandom(GAME_H));
+        ofTranslate(ofRandom(GAME_W*2), ofRandom(GAME_H));
         ofRotate(ofRandom(360));
         ofRect( 0,0, 20, 20);
         ofPopMatrix();

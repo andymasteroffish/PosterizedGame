@@ -2,8 +2,8 @@
 
 HeartbeatEffect::HeartbeatEffect(){
     setup();
-    offsetFromParentObject.x = -10;
-    offsetFromParentObject.y = 0;
+    offsetFromParentObject.x = 16;
+    offsetFromParentObject.y = -15;
     timer = 99999;
     curScale = 1;
 }
@@ -19,7 +19,7 @@ void HeartbeatEffect::applyEffectToDot(PixelDot (&dots)[DOTS_W][DOTS_H], ofVec2f
     }
     
     //set the color to red
-    thisDot->col.set(255, 0, 0);
+    thisDot->col.set(210, 30, 40);
     
     //modify the effect scale to make a heartbeat
     timer += deltaTime;
@@ -28,8 +28,8 @@ void HeartbeatEffect::applyEffectToDot(PixelDot (&dots)[DOTS_W][DOTS_H], ofVec2f
     float middlebeat = totalTime * 0.6;
     
     
-    float maxScale = 2;
-    float minScale = 1;
+    float maxScale = 1.5;//2;
+    float minScale = 0.75;//1;
     float scaleDropPerSecond = 1;
     
     curScale -= scaleDropPerSecond * deltaTime;
