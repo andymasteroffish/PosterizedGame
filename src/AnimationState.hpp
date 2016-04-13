@@ -17,7 +17,7 @@ public:
     
     void setup(string _name, float _animationTime, float _transitionTime, bool _doesLoop);
     
-    void addTimeline(string timelineName, bool makeStarterNodes);
+    void addTimeline(string timelineName);
     
     AnimationNode getCurNode(int timelineIndex);
     AnimationNode getNextNode(int timelineIndex);

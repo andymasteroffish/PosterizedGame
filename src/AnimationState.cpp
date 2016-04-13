@@ -18,12 +18,10 @@ void AnimationState::setup(string _name, float _animationTime, float _transition
     timelines.clear();
 }
 
-void AnimationState::addTimeline(string timelineName, bool makeStarterNodes){
-    Timeline newTimeline;
-    newTimeline.setup(timelines.size(), animationTime, timelineName, doesLoop);
-    if (makeStarterNodes){
-        newTimeline.makeStarterNodes();
-    }
+void AnimationState::addTimeline(string timelineName){
+    AnimationTimeline newTimeline;
+    newTimeline.setup(animationTime, timelineName, doesLoop);
+    
     timelines.push_back(newTimeline);
 }
 

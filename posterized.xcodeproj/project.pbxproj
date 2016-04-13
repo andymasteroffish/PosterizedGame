@@ -25,6 +25,10 @@
 		5716F5F91CBEC827001E3215 /* AnimationState.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5716F5F81CBEC827001E3215 /* AnimationState.cpp */; settings = {ASSET_TAGS = (); }; };
 		5716F5FF1CBEC88C001E3215 /* AnimationTimeline.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5716F5FD1CBEC88C001E3215 /* AnimationTimeline.cpp */; settings = {ASSET_TAGS = (); }; };
 		5716F6021CBEC998001E3215 /* AnimationNode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5716F6011CBEC998001E3215 /* AnimationNode.cpp */; settings = {ASSET_TAGS = (); }; };
+		5716F60C1CBECA92001E3215 /* tinyxml.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5716F6051CBECA92001E3215 /* tinyxml.cpp */; settings = {ASSET_TAGS = (); }; };
+		5716F60D1CBECA92001E3215 /* tinyxmlerror.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5716F6071CBECA92001E3215 /* tinyxmlerror.cpp */; settings = {ASSET_TAGS = (); }; };
+		5716F60E1CBECA92001E3215 /* tinyxmlparser.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5716F6081CBECA92001E3215 /* tinyxmlparser.cpp */; settings = {ASSET_TAGS = (); }; };
+		5716F60F1CBECA92001E3215 /* ofxXmlSettings.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5716F60A1CBECA92001E3215 /* ofxXmlSettings.cpp */; settings = {ASSET_TAGS = (); }; };
 		E4328149138ABC9F0047C5CB /* openFrameworksDebug.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E4328148138ABC890047C5CB /* openFrameworksDebug.a */; };
 /* End PBXBuildFile section */
 
@@ -96,6 +100,12 @@
 		5716F5FE1CBEC88C001E3215 /* AnimationTimeline.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = AnimationTimeline.hpp; sourceTree = "<group>"; };
 		5716F6001CBEC998001E3215 /* AnimationNode.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = AnimationNode.hpp; sourceTree = "<group>"; };
 		5716F6011CBEC998001E3215 /* AnimationNode.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = AnimationNode.cpp; sourceTree = "<group>"; };
+		5716F6051CBECA92001E3215 /* tinyxml.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = tinyxml.cpp; sourceTree = "<group>"; };
+		5716F6061CBECA92001E3215 /* tinyxml.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = tinyxml.h; sourceTree = "<group>"; };
+		5716F6071CBECA92001E3215 /* tinyxmlerror.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = tinyxmlerror.cpp; sourceTree = "<group>"; };
+		5716F6081CBECA92001E3215 /* tinyxmlparser.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = tinyxmlparser.cpp; sourceTree = "<group>"; };
+		5716F60A1CBECA92001E3215 /* ofxXmlSettings.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxXmlSettings.cpp; sourceTree = "<group>"; };
+		5716F60B1CBECA92001E3215 /* ofxXmlSettings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxXmlSettings.h; sourceTree = "<group>"; };
 		E4328143138ABC890047C5CB /* openFrameworksLib.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = openFrameworksLib.xcodeproj; path = ../../../libs/openFrameworksCompiled/project/osx/openFrameworksLib.xcodeproj; sourceTree = SOURCE_ROOT; };
 		E4B69B5B0A3A1756003C02F2 /* posterizedDebug.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = posterizedDebug.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E4B6FCAD0C3E899E008CF71C /* openFrameworks-Info.plist */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = text.plist.xml; path = "openFrameworks-Info.plist"; sourceTree = "<group>"; };
@@ -166,6 +176,36 @@
 			name = Animation;
 			sourceTree = "<group>";
 		};
+		5716F6031CBECA92001E3215 /* ofxXmlSettings */ = {
+			isa = PBXGroup;
+			children = (
+				5716F6041CBECA92001E3215 /* libs */,
+				5716F6091CBECA92001E3215 /* src */,
+			);
+			name = ofxXmlSettings;
+			path = src/lib/ofxXmlSettings;
+			sourceTree = "<group>";
+		};
+		5716F6041CBECA92001E3215 /* libs */ = {
+			isa = PBXGroup;
+			children = (
+				5716F6051CBECA92001E3215 /* tinyxml.cpp */,
+				5716F6061CBECA92001E3215 /* tinyxml.h */,
+				5716F6071CBECA92001E3215 /* tinyxmlerror.cpp */,
+				5716F6081CBECA92001E3215 /* tinyxmlparser.cpp */,
+			);
+			path = libs;
+			sourceTree = "<group>";
+		};
+		5716F6091CBECA92001E3215 /* src */ = {
+			isa = PBXGroup;
+			children = (
+				5716F60A1CBECA92001E3215 /* ofxXmlSettings.cpp */,
+				5716F60B1CBECA92001E3215 /* ofxXmlSettings.h */,
+			);
+			path = src;
+			sourceTree = "<group>";
+		};
 		6948EE371B920CB800B5AC1A /* local_addons */ = {
 			isa = PBXGroup;
 			children = (
@@ -176,6 +216,7 @@
 		BB4B014C10F69532006C3DED /* addons */ = {
 			isa = PBXGroup;
 			children = (
+				5716F6031CBECA92001E3215 /* ofxXmlSettings */,
 			);
 			name = addons;
 			sourceTree = "<group>";
@@ -318,11 +359,15 @@
 				5716F5E01CBEC452001E3215 /* LaserBlast.cpp in Sources */,
 				5716F5ED1CBEC45B001E3215 /* LaserChargeEffect.cpp in Sources */,
 				5716F5E11CBEC452001E3215 /* Player.cpp in Sources */,
+				5716F60C1CBECA92001E3215 /* tinyxml.cpp in Sources */,
 				5716F5E31CBEC452001E3215 /* Turret.cpp in Sources */,
 				5716F6021CBEC998001E3215 /* AnimationNode.cpp in Sources */,
+				5716F60F1CBECA92001E3215 /* ofxXmlSettings.cpp in Sources */,
 				5716F5F91CBEC827001E3215 /* AnimationState.cpp in Sources */,
 				5716F5DF1CBEC452001E3215 /* TerrainFloor.cpp in Sources */,
+				5716F60D1CBECA92001E3215 /* tinyxmlerror.cpp in Sources */,
 				5716F5FF1CBEC88C001E3215 /* AnimationTimeline.cpp in Sources */,
+				5716F60E1CBECA92001E3215 /* tinyxmlparser.cpp in Sources */,
 				5716F5DE1CBEC452001E3215 /* GameObject.cpp in Sources */,
 				5716F5F31CBEC5E6001E3215 /* AnimationController.cpp in Sources */,
 				5716F5E41CBEC452001E3215 /* Bullet.cpp in Sources */,

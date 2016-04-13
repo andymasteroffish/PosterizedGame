@@ -46,10 +46,6 @@ class Player : public GameObject {
     //figuring out when we are touching other objects
     ofVec2f groundRayStartOffset, groundRayEndOffset;
     
-    //temporary animation test
-    vector<ofImage> walkPics;
-    float walkFrameTime, walkFrameTimer;
-    int curWalkFrame;
     
     
 };

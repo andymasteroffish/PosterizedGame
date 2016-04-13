@@ -6,6 +6,7 @@ void GameObject::setup(vector<GameObject *> * _allGameObjects){
     zIndex = 0;
     killMe = false;
     gameObjectToAdd = NULL;
+    animController = NULL;
     objectName = "none";
     layer = LAYER_DEFAULT;
     setupCustom();
@@ -14,8 +15,13 @@ void GameObject::setup(vector<GameObject *> * _allGameObjects){
 void GameObject::update(float _deltaTime){
     deltaTime = _deltaTime;
     
-    //do whatever this objetc does
+    //do whatever this object does
     updateCustom();
+    
+    //update the animator if this thing has one
+    if (animController != NULL){
+        animController->update(deltaTime);
+    }
     
     //keep any pixel effects with the object
     for (int i=0; i<pixelEffects.size(); i++){
@@ -133,6 +139,11 @@ void GameObject::destroy(){
     //delete all hotboxes
     for (int i=0; i<hitBoxes.size(); i++){
         delete hitBoxes[i];
+    }
+    
+    if (animController != NULL){
+        animController->destroy();
+        delete animController;
     }
 }
 

@@ -1,11 +1,12 @@
 #pragma once
 
 #include "ofMain.h"
+#include "BasicInfo.h"
+
 #include "PixelDotEffect.h"
 #include "RaycastInfo.h"
 #include "HitBox.h"
-#include "BasicInfo.h"
-
+#include "AnimationController.hpp"
 
 
 class GameObject {
@@ -55,6 +56,9 @@ class GameObject {
     //where we are
     ofVec2f pos;
     float zIndex;
+    
+    //drawing
+    AnimationController * animController;
     
     //any pixel effects created by this object
     vector<PixelDotEffect *> pixelEffects;
