@@ -40,7 +40,7 @@ void Player::setupCustom(){
     //player animations
     animController = new AnimationController();
     animController->setup("player_animations.xml");
-        
+    
     
 }
 
@@ -84,6 +84,12 @@ void Player::updateCustom(){
         yVel = 0;
     }
     
+    //upadte the animator
+    if (holdingLeft || holdingRight){
+        animController->setCurrentAnimation(0);
+    }else{
+        animController->setCurrentAnimation(1);
+    }
 }
 
 void Player::drawCustom(){
@@ -97,8 +103,10 @@ void Player::drawCustom(){
     
     ofSetColor(0);
     ofPushMatrix();
-    ofTranslate(pos.x, pos.y - 8);
+    ofTranslate(pos.x, pos.y - 5);
     ofScale(0.5, 0.5);
+    ofScale(dir, 1);
+    
     animController->draw(false);
     ofPopMatrix();
     
