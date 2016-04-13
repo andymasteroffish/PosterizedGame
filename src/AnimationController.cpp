@@ -55,7 +55,12 @@ void AnimationController::setCurrentAnimation(string animationName){
 void AnimationController::setCurrentAnimation(int animationID){
     if (curAnimation != animationID){
         curAnimation = animationID;
-        curTime = 0;
+        
+        //setup the transition form where the limbs are now to where they should be
+        for (int i=0; i<limbs.size(); i++){
+            animations[curAnimation].timelines[i].createTransitionNodeFromLimb(limbs[i], animations[curAnimation].transitionTime);
+        }
+        curTime = -animations[curAnimation].transitionTime;
     }
     
 }

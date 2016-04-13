@@ -28,6 +28,13 @@ void AnimationState::addTimeline(string timelineName){
 
 AnimationNode AnimationState::getCurNode(int timelineIndex){
     int selectedNode = timelines[timelineIndex].selectedNode;
+    
+    //during transitions, the sleected node will be -1, menaing we should use the transition node
+    if (selectedNode == -1){
+        return timelines[timelineIndex].transitionNode;
+    }
+    
+    //otherwise just return the given node
     return timelines[timelineIndex].nodes[selectedNode];
 }
 

@@ -37,10 +37,22 @@ void AnimationTimeline::update(float _curTime){
         }
     }
     
+    //during transitions, the selected node is the transition node, denoted by -1
+    if (curTime < 0){
+        selectedNode = -1;
+    }
+    
+    //the next node is the one after the selected node, or looping back to the first
     nextNode = selectedNode+1;
     if (nextNode >= nodes.size()){
         nextNode = 0;
     }
     
     
+}
+
+void AnimationTimeline::createTransitionNodeFromLimb(AnimationLimb limb, float transitionTime){
+    transitionNode.pos = limb.pos;
+    transitionNode.angle = limb.angle;
+    transitionNode.time = -transitionTime;
 }

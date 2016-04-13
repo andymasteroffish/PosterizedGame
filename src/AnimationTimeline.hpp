@@ -11,6 +11,7 @@
 
 #include "ofMain.h"
 #include "AnimationNode.hpp"
+#include "AnimationLimb.hpp"
 
 class AnimationTimeline{
 public:
@@ -18,12 +19,15 @@ public:
     void setup(float _maxTime, string _limbName, bool _animationLoops);
     void update(float _curTime);
     
+    void createTransitionNodeFromLimb(AnimationLimb limb, float transitionTime);
+    
     //info
     string limbName;
     float maxTime;
     float curTime;
     bool animationLoops;
     vector<AnimationNode> nodes;
+    AnimationNode transitionNode;
     
     int selectedNode;   //this could be called curNode. This name is a hold over from the animation tool
     int nextNode;
