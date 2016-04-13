@@ -27,15 +27,15 @@ void AnimationState::addTimeline(string timelineName){
 
 
 AnimationNode AnimationState::getCurNode(int timelineIndex){
-    int selectedNode = timelines[timelineIndex].selectedNode;
+    int curNode = timelines[timelineIndex].curNode;
     
     //during transitions, the sleected node will be -1, menaing we should use the transition node
-    if (selectedNode == -1){
+    if (curNode == -1){
         return timelines[timelineIndex].transitionNode;
     }
     
     //otherwise just return the given node
-    return timelines[timelineIndex].nodes[selectedNode];
+    return timelines[timelineIndex].nodes[curNode];
 }
 
 AnimationNode AnimationState::getNextNode(int timelineIndex){

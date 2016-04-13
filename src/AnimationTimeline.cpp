@@ -19,7 +19,7 @@ void AnimationTimeline::setup(float _maxTime, string _limbName, bool _animationL
     
     nodes.clear();
     
-    selectedNode = 0;
+    curNode = 0;
     
 }
 
@@ -28,10 +28,10 @@ void AnimationTimeline::update(float _curTime){
     curTime = _curTime;
     
     //selected node should be the one before the current point on the timeline
-    selectedNode = 0;
+    curNode = 0;
     for (int i=0; i<nodes.size(); i++){
         if (nodes[i].time <= curTime){
-            selectedNode = i;
+            curNode = i;
         }else{
             break;
         }
@@ -39,11 +39,11 @@ void AnimationTimeline::update(float _curTime){
     
     //during transitions, the selected node is the transition node, denoted by -1
     if (curTime < 0){
-        selectedNode = -1;
+        curNode = -1;
     }
     
     //the next node is the one after the selected node, or looping back to the first
-    nextNode = selectedNode+1;
+    nextNode = curNode+1;
     if (nextNode >= nodes.size()){
         nextNode = 0;
     }

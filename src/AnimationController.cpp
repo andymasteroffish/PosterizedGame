@@ -23,7 +23,6 @@ void AnimationController::update(float deltaTime){
     
     
     for (int i=0; i<limbs.size(); i++){
-        //cout<<"updating animaiton "<<selectedAnimation<<" timeline "<<i<<endl;
         animations[curAnimation].timelines[i].update(curTime);
         
         AnimationNode curNode = animations[curAnimation].getCurNode(i);
@@ -99,15 +98,10 @@ void AnimationController::loadAnimation(string fileName){
     //pop out of LIMBS
     xml.popTag();
     
-    //cout<<"loaded limbs"<<endl;
-    
-    
     xml.pushTag("ANIMATIONS");
     string animationTagName = "ANIMATION_"+ofToString(0);
     while (xml.tagExists(animationTagName)){
         xml.pushTag(animationTagName);
-        
-        //cout<<"push "<<animationTagName<<endl;
         
         string animationName = xml.getValue("name", "none");
         float animationTime = xml.getValue("length", 3.0f);
@@ -122,18 +116,12 @@ void AnimationController::loadAnimation(string fileName){
             string timelineTagName = "TIMELINE_"+ofToString(t);
             xml.pushTag(timelineTagName);
             
-            //cout<<"push "<<timelineTagName<<endl;
-            
             animations[animations.size()-1].timelines[t].limbName = limbs[t].name;
-            
-            //animations[animations.size()-1].addTimeline(limbs[animations.size()-1].name, false);
             
             //go through the nodes of this timeline
             string nodeTagName = "NODE_"+ofToString(0);
             while (xml.tagExists(nodeTagName)){
                 xml.pushTag(nodeTagName);
-                
-                //cout<<"push "<<nodeTagName<<endl;
                 
                 AnimationNode thisNode;
                 thisNode.time = xml.getValue("time", 0.0f);
@@ -141,8 +129,6 @@ void AnimationController::loadAnimation(string fileName){
                 thisNode.pos.y = xml.getValue("pos_y", 0.0f);
                 thisNode.angle = xml.getValue("angle", 0.0f);
                 
-                //cout<<"adding node to animaiton "<<animations.size()-1<<" timeline "<<t<<endl;
-                //cout<<"   node time "<<thisNode.time<<endl;
                 animations[animations.size()-1].timelines[t].nodes.push_back(thisNode);
                 
                 //pop out of this node

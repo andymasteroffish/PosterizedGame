@@ -29,7 +29,7 @@ public:
     vector<AnimationNode> nodes;
     AnimationNode transitionNode;
     
-    int selectedNode;   //this could be called curNode. This name is a hold over from the animation tool
+    int curNode;
     int nextNode;
     
     
